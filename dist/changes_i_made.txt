@@ -1,0 +1,5 @@
+1. Create the layout directory and add the footer.php and header.php, to include it, to index.php and view.php
+
+2. deleted not needed css files ( bootstrap1.min.css and bootstrap2.min.css ) because of not including / using them anywhere
+
+3. 
