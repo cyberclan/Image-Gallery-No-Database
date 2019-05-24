@@ -4,4 +4,7 @@
 2. deleted not needed css files ( bootstrap1.min.css and bootstrap2.min.css ) because of not including / using them anywhere
 
 3. edit view.php and add / create the file function.inc.php under the directory includes
-4. 
+4. add the function setLocationHeader() to the functions.inc.php and edit the upload.inc.php file. Also set the link from index.html at the index header file to index.php
+5. after you have set the "GET" variable to upload=something and click to gallery so the link looks like "index.php?upload=empty#gallery" but it should look like this if the "index.php?upload=empty&gallery"
+6. changed upload.inc.php file and edit the function.inc.php
+7. 

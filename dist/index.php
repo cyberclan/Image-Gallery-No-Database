@@ -3,7 +3,7 @@
 	<!-- Header Section -->
 	<header>
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-			<a href="index.html" class="navbar-brand">Image Gallery</a>
+			<a href="index.php" class="navbar-brand">Image Gallery</a>
 
 			<ul class="navbar-nav">
 				<li class="nav-item">
