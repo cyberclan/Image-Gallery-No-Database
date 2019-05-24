@@ -1,4 +1,5 @@
 <?php include('layout/header.php'); ?>
+<?php include('includes/functions.inc.php'); ?>
 
 	<!-- Header Section -->
 	<header>
@@ -16,48 +17,23 @@
 	<!-- Main Section -->
 	<div class="container showcase mt-5">
 
-		<?php
-			if (isset($_GET['upload'])) {
-				$upload = $_GET['upload'];
+	<?php
+		if (isset($_GET['upload'])) {
+			$upload = $_GET['upload'];
 
-				if ($upload === 'empty') {
-					echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
-			Please select a file to upload.
-			<button type="button" class="close" data-dismiss="alert" aria-label="close">
-				<span aria-hidden="true">&times;</span>
-			</button>
-		</div>';
-				} else if ($upload === 'not-allowed') {
-					echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
-			You can upload only jpeg, jpg, png extensions files.
-			<button type="button" class="close" data-dismiss="alert" aria-label="close">
-				<span aria-hidden="true">&times;</span>
-			</button>
-		</div>';
-				} else if ($upload === 'error') {
-					echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
-			Something went wrong, try again.
-			<button type="button" class="close" data-dismiss="alert" aria-label="close">
-				<span aria-hidden="true">&times;</span>
-			</button>
-		</div>';
-				} else if ($upload === 'big-file-size') {
-					echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
-			File size must be less than 2MB.
-			<button type="button" class="close" data-dismiss="alert" aria-label="close">
-				<span aria-hidden="true">&times;</span>
-			</button>
-		</div>';
-				} else if ($upload === 'success') {
-					echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
-			Your file uploaded successfully.
-			<button type="button" class="close" data-dismiss="alert" aria-label="close">
-				<span aria-hidden="true">&times;</span>
-			</button>
-		</div>';
-				}
+			if ($upload === 'empty') {
+				echo setAlertMessages($alertTypeEmpty, $alertMessageWarningText);
+			} else if ($upload === 'not-allowed') {
+				echo setAlertMessages($alertTypeNotAllowed, $alertMessageNotAllowedText);
+			} else if ($upload === 'error') {
+				echo setAlertMessages($alertTypeError, $alertMessageErrorText);
+			} else if ($upload === 'big-file-size') {
+				echo setAlertMessages($alertTypeBigFileSize, $alertMessageBigFileSizeText);
+			} else if ($upload === 'success') {
+				echo setAlertMessages($alertTypeSuccess, $alertMessageSuccessText);
 			}
-		?>
+		}
+	?>
 
 		<h1 class="mb-3">Upload and View Images</h1>
 		<h2 class="sub-heading mb-3">Select the image to upload</h2>

@@ -6,6 +6,26 @@ $errorViewImagesText = 'Something Went Wrong';
 // templates
 $errorViewImages = "<h3 class='text-center'>{$errorViewImagesText}</h3>";
 
+// Empty
+$alertMessageWarningText = "Please select a file to upload.";
+$alertTypeEmpty = "warning";
+
+// NotAllowed
+$alertMessageNotAllowedText = "You can upload only jpeg, jpg, png extensions files.";
+$alertTypeNotAllowed = "danger";
+
+// Error
+$alertMessageErrorText = "Something went wrong, try again.";
+$alertTypeError = "danger";
+
+// BigFileSize
+$alertMessageBigFileSizeText = "File size must be less than 2MB.";
+$alertTypeBigFileSize = "danger";
+
+// Success
+$alertMessageSuccessText = "Your file uploaded successfully.";
+$alertTypeSuccess = "success";
+
 // All functions
 
 // function for viewing Images
@@ -101,6 +121,14 @@ function uploadingImages() {
 	}
 }
 
-
+// function for setting Alert Messages
+function setAlertMessages($alertType, $alertMessageText) {
+	return "<div class='alert alert-{$alertType} alert-dismissible fade show' role='alert'>
+				{$alertMessageText}
+			<button type='button' class='close' data-dismiss='alert' aria-label='close'>
+				<span aria-hidden='true'>&times;</span>
+			</button>
+		</div>";
+}
 
 ?>
