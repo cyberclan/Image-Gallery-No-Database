@@ -1,5 +1,7 @@
+0. didn't changed anything at the JS and CSS files ( but figured out that scrollUp function only shown sometimes if you click to each image and check if that is there or not )
 1. Create the layout directory and add the footer.php and header.php, to include it, to index.php and view.php
 
 2. deleted not needed css files ( bootstrap1.min.css and bootstrap2.min.css ) because of not including / using them anywhere
 
-3. 
+3. edit view.php and add / create the file function.inc.php under the directory includes
+4. 
