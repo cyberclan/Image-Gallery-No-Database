@@ -1,3 +1,5 @@
+<?php include('functions.inc.php'); ?>
+
 <?php
 	if (isset($_POST['upload'])) {
 		if (empty($_FILES['file']['name'])) {
@@ -31,7 +33,7 @@
 						move_uploaded_file($imageTmpName, $imageDestination);
 
 						// ---------- Include Universal Image Resizing Function --------
-						include_once("resize.inc.php");
+						//include_once("resize.inc.php");
 						$target_file = "../uploads/images/$imageNewName";
 						$resized_file = "../uploads/thumb/thumb_$imageNewName";
 						$wmax = 350;
