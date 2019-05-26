@@ -1,19 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<link rel="stylesheet" href="css/bootstrap.min.css">
-	<link rel="stylesheet" href="css/style.css">
-	<title>Image Gallery | No Database</title>
-</head>
-<body>
+<?php include('layout/header.php'); ?>
+<?php include('includes/functions.inc.php'); ?>
 
 	<!-- Header Section -->
 	<header>
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-			<a href="index.html" class="navbar-brand">Image Gallery</a>
+			<a href="index.php" class="navbar-brand">Image Gallery</a>
 
 			<ul class="navbar-nav">
 				<li class="nav-item">
@@ -26,48 +17,25 @@
 	<!-- Main Section -->
 	<div class="container showcase mt-5">
 
-		<?php
-			if (isset($_GET['upload'])) {
-				$upload = $_GET['upload'];
+	<?php
+		if (isset($_GET['upload'])) {
+			$upload = $_GET['upload'];
 
-				if ($upload === 'empty') {
-					echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
-			Please select a file to upload.
-			<button type="button" class="close" data-dismiss="alert" aria-label="close">
-				<span aria-hidden="true">&times;</span>
-			</button>
-		</div>';
-				} else if ($upload === 'not-allowed') {
-					echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
-			You can upload only jpeg, jpg, png extensions files.
-			<button type="button" class="close" data-dismiss="alert" aria-label="close">
-				<span aria-hidden="true">&times;</span>
-			</button>
-		</div>';
-				} else if ($upload === 'error') {
-					echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
-			Something went wrong, try again.
-			<button type="button" class="close" data-dismiss="alert" aria-label="close">
-				<span aria-hidden="true">&times;</span>
-			</button>
-		</div>';
-				} else if ($upload === 'big-file-size') {
-					echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
-			File size must be less than 2MB.
-			<button type="button" class="close" data-dismiss="alert" aria-label="close">
-				<span aria-hidden="true">&times;</span>
-			</button>
-		</div>';
-				} else if ($upload === 'success') {
-					echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
-			Your file uploaded successfully.
-			<button type="button" class="close" data-dismiss="alert" aria-label="close">
-				<span aria-hidden="true">&times;</span>
-			</button>
-		</div>';
-				}
+			if ($upload === 'empty') {
+				echo setAlertMessages($alertTypeEmpty, $alertMessageWarningText);
+			} else if ($upload === 'not-allowed') {
+				echo setAlertMessages($alertTypeNotAllowed, $alertMessageNotAllowedText);
+			} else if ($upload === 'error') {
+				echo setAlertMessages($alertTypeError, $alertMessageErrorText);
+			} else if ($upload === 'big-file-size') {
+				echo setAlertMessages($alertTypeBigFileSize, $alertMessageBigFileSizeText);
+			} else if ($upload === 'success') {
+				echo setAlertMessages($alertTypeSuccess, $alertMessageSuccessText);
+			} else if ($upload === 'image-exist') {
+				echo setAlertMessages($alertTypeImageExists, $alertMessageImageExistsText);
 			}
-		?>
+		}
+	?>
 
 		<h1 class="mb-3">Upload and View Images</h1>
 		<h2 class="sub-heading mb-3">Select the image to upload</h2>
@@ -88,27 +56,9 @@
 		<h2 class="p-3 mb-4 text-uppercase">Gallery</h2>
 		<div class="container">
 			<div class="row">
-
-				<?php
-					$path = 'uploads/thumb';
-					//	Reomving the '..' & '.' from the array
-					$images = array_diff(scandir($path, 1), array('..', '.'));
-
-					foreach ($images as $image) {
-						echo '<div class="col-lg-3 col-md-4 col-sm-6">
-					<a href="view.php?image='.$image.'" class="d-block mb-4 h-100">
-						<img class="img-fluid img-thumbnail" src="uploads/thumb/'.$image.'" alt="">
-					</a>
-				</div>';
-					}
-				?>
-
+				<?php showGallery(); ?>
+			</div>
 		</div>
 	</div>
 
-	<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
-	<script type="text/javascript" src="js/jquery.scrollUp.min.js"></script>
-	<script type="text/javascript" src="js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="js/main.js"></script>
-</body>
-</html>
+<?php include('layout/footer.php'); ?>
